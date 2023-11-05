@@ -1,0 +1,66 @@
+version 0.2.8
+- Package now depends on R >= 4.0.0
+- Examples using |> now in stead of magrittr::%>%
+- fixed bug in impute_knn: VIM backend was ignored. (Thanks to Sander
+  Scholtus and Sigrid van Hoek for reporting)
+- 
+
+version 0.2.7
+- Updated C-code for compatability with CLANG compiler (Thanks
+  to Brian Ripley for pointing out the specific noncompliance 
+  with WRE)
+
+version 0.2.6
+- Fixed error in 'impute_shd' caused by VIM update.
+
+
+version 0.2.5
+- CRAN-requested update, avoiding misuse of 'order' on data.frames
+  (Thanks to Kurt Hornik for reporting).
+
+version 0.2.4
+- Updated tests in preparation of the new 'stringsAsFactors=FALSE' policy 
+  (thanks to Kurt Hornik)
+- Fixed parsing error for formulas with very long variable names (Thanks to 
+  Karl Dunkle Werner).
+- Fix: ... was not parsed to 'missForest' in 'impute_mf'.
+- Fix: Column names with spaces were not handled properly (Thanks to Miles
+  McBain)
+- Fix: 'impute_proxy' would crash when imputing a character constant.
+
+
+version 0.2.3
+- switched to 'tinytest' testing framework
+- Fix in impute_median: wrong medians imputed at randomly sorted data (thanks to Ranjeed-S).
+
+version 0.2.2
+- new functions 'impute' and 'impute_' use pre-fit models to impute datasets. (Thanks to Max Kuhn for suggesting this).
+- new utility function 'foretell'. Replacement for 'predict' that always returns values of the predicted type.
+- bugfix: ... arguments were not passed correctly for linear models.
+
+version 0.2.1
+- Added support for ridge/elasticnet/lasso regression (using 'glmnet')
+- Added support for missForest imputation (using 'missForest')
+- Added support for imputation using EM-estimated parameters (using 'norm')
+- 'impute_proxy' now supports transformations in the rhs of formula.
+- 'impute_median' gains 'type' argument to specify algorithm for median computation.
+- New functions 'simputation_capabilities' and 'simputation_suggests'
+  detect which packages supporting imputation methods are available.
+- Renamed 'na.action' -> 'na_action' for consistency within simputation.
+- Default 'na_action' for 'impute_cart' is now 'na.rpart'
+- Default 'na_action' for 'impute_rf' is not 'na.roughfix'
+- Complete overhaul of function documentation. Now set up systematically
+  with synopsis of methodology where relevant.
+- Dependencies on larger packages (randomForest, glmnet) moved to 'Suggests'
+- Fix in 'impute_rf': needed workaround for bug in randomForest 4.6.12 
+  (formulas like Y ~ . - X not handled correctly by predict.randomForest)
+- Bugfix in 'impute_pmm': argument 'predictor' was ignored.
+- Bugfix in 'impute_rhd': attributes of 'dat' were not always preserved.
+
+version 0.2.0
+- Added na.action option for model-based imputation (thanks to Soogeun Park)
+- impute_rhd, impute_shd, and impute_knn now have option 'backend="VIM"'
+- removed call to structure(NULL,*) to comply to changes in R-devel (thanks to Martin Maechler)
+
+version 0.1.0
+- initial release

@@ -1,0 +1,29 @@
+MatrixExtra             MatrixExtra package
+MatrixExtra-options     MatrixExtra internal options
+assignment              Assignment operator for CSR matrices
+cbind2-method           Concatenate sparse matrices by columns
+check_sparse_matrix     Check if the underlying data behind a sparse
+                        matrix constitutes a valid object
+conversions             Conversions between matrix types
+csr-linalg              Linear Algebra functions for CSR matrices
+deepcopy_sparse_object
+                        Deep copy sparse matrices and vectors
+emptySparse             Create Empty Sparse Matrix
+filterSparse            Filter values of a sparse matrix or vector
+mapSparse               Map values of a sparse matrix/vector
+mathematical-functions
+                        Mathematical functions for CSR and COO matrices
+matmult                 Multithreaded Sparse-Dense Matrix and Vector
+                        Multiplications
+operators               Mathematical operators on sparse matrices and
+                        sparse vectors
+rbind2-method           Concatenate sparse matrices/vectors by rows
+rbind_csr               Concatenate inputs by rows into a CSR matrix
+remove_sparse_zeros     Remove Zeros from a Sparse Matrix or Sparse
+                        Vector
+show                    Quick Glance at Sparse Objects
+slice                   Sparse Matrices Slicing
+sort_sparse_indices     Sort the indices of a sparse matrix or sparse
+                        vector
+t_shallow               Transpose a sparse matrix by changing its
+                        format

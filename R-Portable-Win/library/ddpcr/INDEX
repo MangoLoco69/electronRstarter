@@ -1,0 +1,42 @@
+analysis_complete       Is the analysis complete?
+analyze                 Run analysis on a ddPCR plate
+clusters                Potential droplet clusters for a plate type
+custom_thresholds       Plate type: custom thresholds
+ddpcr_plate             Plate type: ddPCR plate
+fam_positive_pnpp       Plate type: FAM-positive PNPP
+hex_positive_pnpp       Plate type: HEX-positive PNPP
+launch                  Run the interactive analysis tool (Shiny app)
+                        in a web browser
+load_plate              Load a previously saved ddPCR plate
+name                    Plate name
+new_plate               Create a new ddPCR plate
+next_step               Run the next step in an analysis
+params                  Plate parameters
+plate_data              Plate data (droplets data)
+plate_meta              Plate metadata
+plate_types             Supported plate types
+plot.custom_thresholds
+                        Plot a ddPCR plate of type custom thresholds
+plot.ddpcr_plate        Plot a ddPCR plate
+plot.wildtype_mutant_pnpp
+                        Plot a ddPCR plate of type wildtype/mutant PNPP
+pnpp_experiment         Plate type: PNPP experiment
+reset                   Reset a plate
+sample_data             Get sample data
+save_plate              Save a ddPCR plate
+set_default_params      Reset plate parameters to their defaults
+steps                   Analysis steps of a ddPCR plate
+subset.ddpcr_plate      Subsetting a ddPCR plate
+thresholds              Get/set the thresholds
+type                    Plate type
+well_info               Get metadata info of a well
+wells_mutant            Get mutant wells
+wells_negative          Get negative wells
+wells_positive          Get positive wells
+wells_success           Get successful/failed wells
+wells_used              Get wells used in a ddPCR plate
+wells_wildtype          Get wildtype wells
+wildtype_mutant_pnpp    Plate type: wildtype/mutant PNPP
+x_threshold             Get/set the X threshold
+x_var                   Get/set the X/Y variable (dye name)
+y_threshold             Get/set the Y threshold

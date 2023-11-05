@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Extending ddpcr by adding new plate types</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h1>Extending ddpcr by adding new plate types</h1>
+
+<p>While this package was developed as a tool to facilitate the analysis of some specific types of ddPCR data, it was implemented in a way that easily allows users to add custom ddPCR plate types through <em>S3 inheritance</em> (see <a href="./technical_details.Rmd">the <em>Technical details</em> vignette</a> for more details). The basic concept is that every plate type has a parent plate type, from which it inherits all features, but can be made more specific or add/modify its behaviour. Inheritance is transitive (features are inherited from all ancestors, not only the most immediate one), but a plate can only have one parent (multiple inheritance is not supported). </p>
+
+<h2>Default plate type: ddpcr_plate</h2>
+
+<p>The most basic plate type is <code>ddpcr_plate</code>, and every plate type inherits from it, either directly or by inheriting from other plate types that are descendants of <code>ddpcr_plate</code>. This is handy because it means that all functionality that is common to all ddPCR types is implemented once for <code>ddpcr_plate</code> and can be used by all plate types, unless a plate type specifically removes or modifies some behaviour.
+Every plate type by default inherits all methods that <code>ddpcr_plate</code> has, which can be found by running <code>methods(class = &quot;ddpcr_plate&quot;)</code>. If you create a new plate type and no parent is specified, or if you initialize a ddPCR plate without specifying a plate type, then <code>ddpcr_plate</code> is assumed.</p>
+
+<p>Calling the <code>analyze()</code> function on any plate will result in running the ddPCR data through a series of <em>steps</em> that are defined for the given plate type, and the droplets in the data will be assigned to one of several <em>clusters</em> associated with the given plate type.</p>
+
+<p>Plates of type <code>ddpcr_plate</code> have 4 possible clusters: <code>UNDEFINED</code> for any droplet that has not been assigned a cluster yet, <code>FAILED</code> for droplets in failed wells, <code>OUTLIER</code> for outlier droplets, and <code>EMPTY</code> for droplets without any template in them.  This information can also be seen with the <code>clusters()</code> function.</p>
+
+<p>Plates of type <code>ddpcr_plate</code> have 4 analysis steps: <code>INITIALIZE</code>, <code>REMOVE_FAILURES</code>, <code>REMOVE_OUTLIERS</code>, and <code>REMOVE_EMPTY</code>. This means that any plate that is created will perform these basic steps of removing failed wells, outlier droplets, and empty droplets. The exact functions used for each step can be seen with the <code>steps()</code> function. For example, <code>new_plate(sample_data_dir()) %&gt;% steps</code> will reveal that the <code>REMOVE_FAILURES</code> steps calls the function <code>remove_failures()</code>, so you can view the algorithm by running <code>ddpcr:::remove_failures.ddpcr_plate</code>.</p>
+
+<p>Plates of type <code>ddpcr_plate</code> also have a set of parameters that can be viewed with the <code>params()</code> function. Running <code>new_plate(sample_data_dir()) %&gt;% params %&gt;% str</code> will show all the default parameters that are used. Any of these parameters can be overridden in new plate types, and new parameters can be added.</p>
+
+<h2>Built-in plate types</h2>
+
+<p>The default plate type is the common base for all built-in types, but because it is not specific to any particular ddPCR data, it does not do any droplet gating, as that is highly dependent on the type of data. The default type is useful for pre-processing, exploring, and visualizing any ddPCR data. There are other built-in plate types available, and you can see a list through the <code>plate_types</code> variable. You can learn more about the built-in plate types and what kind of ddPCR data is suitable for each one by viewing its documentation with <code>?plate_types</code>. If none of the built-in plate types are useful for your data, you can create a new plate type with custom analysis steps or parameters.</p>
+
+<h2>Functions to implement when adding a new plate type</h2>
+
+<p>If you want to add a new plate type, there are a few functions you need to implement. All these functions take one argument: a <code>ddpcr_plate</code> object.  Note that all these functions are S3 generics, so you need to follow the S3 method naming scheme. </p>
+
+<h3><code>parent_plate_type()</code>: Define parent plate type</h3>
+
+<p>Each ddPCR plate has a &ldquo;parent&rdquo; plate type from which it inherits all its properties. When creating a custom plate type, you should define this function and simply return the parent plate type. If you don&#39;t define this function, the parent plate type is assumed to be the base type of <code>ddpcr_plate</code>. Inheriting from a parent plate means that the same cluster types, analysis steps, and parameters will be used by default. </p>
+
+<h3><code>define_params()</code>: Define plate type parameters</h3>
+
+<p>Every ddPCR plate type has a set of default parameters. When creating a custom plate type, if your plate type needs a different set of parameters than its parent type, you must define this function and have it return the parameters specific to this plate. When defining this function, you can use <code>NextMethod(&quot;define_params&quot;)</code> to get a list of the parameters of the parent type so that you can simply add to that list rather than redefining all the parameters.</p>
+
+<h3><code>define_clusters()</code>: Define droplet clusters</h3>
+
+<p>Every ddPCR plate type has a set of potential clusters the droplets can be assigned to. When creating a custom plate type, if your plate type uses a different set of clusters than its parent type, you must define this function and have it return the cluster names. When defining this function, you can use <code>NextMethod(&quot;define_clusters&quot;)</code> to get a list of the clusters available in the parent type if you want to simply add new clusters without defining all of them.</p>
+
+<h3><code>define_steps()</code>: Define analysis steps</h3>
+
+<p>Every ddPCR plate type has an ordered set of steps that are run to analyze the data. When creating a new plate type, if your plate type has different analysis steps than its parent type, you must define this function and have it return a named list of the analysis steps. When defining this function, you can use <code>NextMethod(&quot;define_steps&quot;)</code> to get a list of the steps available in the parent type if you want to simply add new steps without defining all of them. Any step that you define must have an associated function with the same name that takes a ddPCR plate as an argument and returns the ddPCR plate after running the given step on it. Most analysis steps will usually change the plate&#39;s metadata (<code>?plate_meta</code>) and the droplet cluster assignments (<code>?plate_data</code>). See the example below for helper functions that are available when writing code for an analysis step.</p>
+
+<h3>Changing the algorithm of an existing step</h3>
+
+<p>With the <code>define_steps()</code> function you can define new analysis steps that are unique to your new plate type. It can also be desirable to simply change the implementation of an existing step instead of creating a new step. For example, any ddPCR plate will, by default, use the <code>ddpcr:::remove_failures.ddpcr_plate</code> function as the algorithm for flagging failed wells. If your plate type has a specific way of flagging failed wells, you can overwrite this step by defining a new S3 generic function for your plate type.</p>
+
+<h3><code>plot()</code>: Plot a ddPCR plate</h3>
+
+<p>The default plot function provided by <code>ddpcr_plate</code> will usually be enough to convey your ddPCR plate information. If there is anything specific you want to add to plots of your new plate type, you can define this function. It is recommended to build on top of the output of the default plot function, rather than start a complete new plot. This can be done by having the first line of code being <code>p &lt;- NextMethod(&quot;plot&quot;)</code> and adding plot elements on top of <code>p</code>. Note that <code>ggplot2</code> is the default plotting library. Read the help section of the default plot to learn more <code>?plot.ddpcr_plate</code>.</p>
+
+<h2>Example</h2>
+
+<p>As a simple exercise to show how easy it is to create a new plate type, this section will walk through the steps required to create a new plate type. The name of the new plate type is <code>fam_border</code>. In experiments of this type, we are interested in running the typical pre-processing (identify failed wells, outlier droplets, and empty droplets), followed by simply classifying the remaining droplets as either FAM-positive or FAM-negative, with the border between positive and negative being a predefined value. This plate type is clearly not very useful but it is good for demonstration purposes.</p>
+
+<p>The first thing to do is to define the parent plate type, which in this case will be <code>ddpcr_plate</code>.</p>
+
+<pre><code class="r">parent_plate_type.fam_border &lt;- function(plate) {
+  &quot;ddpcr_plate&quot;
+}
+</code></pre>
+
+<p>The next step is to define the parameters of this plate type. ddPCR plates of this type are expected to have at least 14,000 droplets per well as a QA metric. If any well has fewer droplets, it is considered a failure. There is already a parameter for this, so we just need to modify it. We also add a new parameter for the border to use for gating the droplets, and give it a default value.</p>
+
+<pre><code class="r">define_params.fam_border &lt;- function(plate) {
+  params &lt;- NextMethod(&quot;define_params&quot;)
+
+  new_params &lt;- list(
+    &#39;REMOVE_FAILURES&#39; = list(
+      &#39;TOTAL_DROPS_T&#39; = 14000  # overwriting an existing parameter
+    ),
+    &#39;GATE&#39; = list(
+      &#39;FAM_BORDER&#39; = 5000  # defining a new parameter
+    )
+  )
+  params &lt;- modifyList(params, new_params)
+
+  params
+}
+</code></pre>
+
+<p>Next we define the potential droplet clusters. We use the same clusters as the default plate type and add two more, to denote droplets in the FAM-positive and FAM-negative sections.</p>
+
+<pre><code class="r">define_clusters.fam_border &lt;- function(plate) {
+  clusters &lt;- NextMethod(&quot;define_clusters&quot;)
+
+  c(clusters,
+    &#39;FAM_POSITIVE&#39;,
+    &#39;FAM_NEGATIVE&#39;
+  )
+}
+</code></pre>
+
+<p>Next we define the analysis steps. We use all the default analysis steps (pre-processing steps), and add a gating step.</p>
+
+<pre><code class="r">define_steps.fam_border &lt;- function(plate) {
+  steps &lt;- NextMethod(&quot;define_steps&quot;)
+
+  c(steps,
+    list(
+      &#39;GATE&#39; = &#39;gate_droplets&#39;
+    ))
+}
+</code></pre>
+
+<p>We need to create the <code>gate_droplets</code> function with the actual logic that will perform the step. Notice the use of the following helper functions that are especially useful when writing analysis step functions: <code>step</code>, <code>check_step</code>, <code>step_begin</code>, <code>step_end</code>, <code>unanalyzed_clusters</code>, and <code>status</code>. You can look up the documentation for each of these functions to learn more.</p>
+
+<pre><code class="r">gate_droplets &lt;- function(plate) {
+  # make sure this step was not called prematurely
+  current_step &lt;- step(plate, &#39;GATE&#39;)
+  check_step(plate, current_step)  
+
+  # show an informative message to the user
+  step_begin(&quot;Classifying droplets as FAM-positive or negative&quot;)
+
+  data &lt;- plate_data(plate)
+  border &lt;- params(plate, &#39;GATE&#39;, &#39;FAM_BORDER&#39;)
+
+  # get a list of clusters that have not been considered yet in the analysis
+  # this is useful so that we only look at droplets that have not yet been
+  # assigned to a cluster
+  unanalyzed_clusters &lt;- unanalyzed_clusters(plate, &#39;FAM_POSITIVE&#39;)
+
+  # get the indices of all droplets that are FAM-positive and negative
+  unanalyzed_idx &lt;- data$cluster %in% unanalyzed_clusters
+  fam_pos &lt;- unanalyzed_idx &amp; data$FAM &gt;= border
+  fam_neg &lt;- unanalyzed_idx &amp; data$FAM &lt; border
+
+  # assign each droplet to its cluster
+  data[fam_pos, &#39;cluster&#39;] &lt;- cluster(plate, &#39;FAM_POSITIVE&#39;)
+  data[fam_neg, &#39;cluster&#39;] &lt;- cluster(plate, &#39;FAM_NEGATIVE&#39;)
+
+  # update the data on the plate object
+  plate_data(plate) &lt;- data
+
+  # record how many drops in each well are in each cluster
+  # and add this info to the plate&#39;s metadata
+  drops_per_cluster &lt;- 
+    plyr::ddply(data, ~ well, function(x) {
+      data.frame(
+        &#39;drops_positive&#39; = sum(x$cluster == cluster(plate, &#39;FAM_POSITIVE&#39;)),
+        &#39;drops_negative&#39; = sum(x$cluster == cluster(plate, &#39;FAM_NEGATIVE&#39;))
+      )
+    })
+  plate_meta(plate) &lt;-
+    dplyr::left_join(
+      plate_meta(plate),
+      drops_per_cluster,
+      by = &quot;well&quot;
+    )
+
+  # VERY IMPORTANT - do not forget to update the status of the plate
+  status(plate) &lt;- current_step
+  step_end()
+
+  plate
+}
+</code></pre>
+
+<p>Now the new plate type is ready to be used. We can also add a plot function if there are any customizations to the plot that are specific to this plate type. The default plot function of ddPCR plates goes a long way, but one thing we can add is a line showing the division border.</p>
+
+<pre><code class="r">plot.fam_border &lt;- function(x, ..., show_border = FALSE) {
+  # Plot a regular ddpcr plate
+  p &lt;- NextMethod(&quot;plot&quot;, x)
+
+  # Show the custom thresholds
+  if (show_border) {
+    border &lt;- params(x, &#39;GATE&#39;, &#39;FAM_BORDER&#39;)
+    p &lt;- p +
+      ggplot2::geom_hline(yintercept = border)
+  }
+
+  p
+}
+</code></pre>
+
+<p>The one last thing we can add is a convenient way for the user to set the border parameter.</p>
+
+<pre><code class="r">`fam_border&lt;-` &lt;- function(plate, value) {
+  params(plate, &#39;GATE&#39;, &#39;FAM_BORDER&#39;) &lt;- value
+  plate
+}
+</code></pre>
+
+<p>Now we can create a new ddPCR plate with the new type and run a full analysis of it.</p>
+
+<pre><code class="r">library(ddpcr)
+</code></pre>
+
+<pre><code>## 
+## Attaching package: &#39;ddpcr&#39;
+</code></pre>
+
+<pre><code>## The following object is masked from &#39;package:stats&#39;:
+## 
+##     step
+</code></pre>
+
+<pre><code class="r">plate &lt;- new_plate(dir = sample_data_dir(), type = &quot;fam_border&quot;)
+</code></pre>
+
+<pre><code>## Warning: `arrange_()` was deprecated in dplyr 0.7.0.
+## Please use `arrange()` instead.
+## See vignette(&#39;programming&#39;) for more help
+</code></pre>
+
+<pre><code>## Warning: `select_()` was deprecated in dplyr 0.7.0.
+## Please use `select()` instead.
+</code></pre>
+
+<pre><code>## Warning: `mutate_()` was deprecated in dplyr 0.7.0.
+## Please use `mutate()` instead.
+## See vignette(&#39;programming&#39;) for more help
+</code></pre>
+
+<pre><code>## Warning: `summarise_()` was deprecated in dplyr 0.7.0.
+## Please use `summarise()` instead.
+</code></pre>
+
+<pre><code>## Warning: `group_by_()` was deprecated in dplyr 0.7.0.
+## Please use `group_by()` instead.
+## See vignette(&#39;programming&#39;) for more help
+</code></pre>
+
+<pre><code>## Warning: `rename_()` was deprecated in dplyr 0.7.0.
+## Please use `rename()` instead.
+</code></pre>
+
+<pre><code class="r">fam_border(plate) &lt;- 8000
+plate &lt;- analyze(plate)
+</code></pre>
+
+<pre><code>## Warning: `filter_()` was deprecated in dplyr 0.7.0.
+## Please use `filter()` instead.
+## See vignette(&#39;programming&#39;) for more help
+</code></pre>
+
+<pre><code class="r">plot(plate, show_drops_empty = TRUE)
+plot(plate, col_drops_fam_negative = &quot;red&quot;,
+     col_drops_fam_positive = &quot;blue&quot;, show_border = TRUE)
+plate_meta(plate, only_used = TRUE)
+</code></pre>
+
+<pre><code>##   well sample row col used    target_ch1     target_ch2 drops success
+## 1  A01   Dean   A   1 TRUE Consensus_FAM WTspecific_HEX 15820    TRUE
+## 2  C01   Mike   C   1 TRUE Consensus_FAM WTspecific_HEX 14256    TRUE
+## 3  F05   Mary   F   5 TRUE Consensus_FAM WTspecific_HEX 15377    TRUE
+## 4  A05   Dave   A   5 TRUE Consensus_FAM WTspecific_HEX 13165   FALSE
+## 5  C05  Emily   C   5 TRUE Consensus_FAM WTspecific_HEX 14109   FALSE
+##   drops_outlier drops_empty drops_non_empty drops_empty_fraction concentration
+## 1             2       13690            2130                0.865           170
+## 2             0       12879            1377                0.903           120
+## 3             0       14126            1251                0.919            99
+## 4             1          NA              NA                   NA            NA
+## 5             0          NA              NA                   NA            NA
+##   drops_positive drops_negative
+## 1           1889            239
+## 2           1281             96
+## 3           1090            161
+## 4              0              0
+## 5              0              0
+</code></pre>
+
+<p><img src="data:image/png;base64,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" title="plot of chunk customanalysis" alt="plot of chunk customanalysis" width="50%" /><img src="data:image/png;base64,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" title="plot of chunk customanalysis" alt="plot of chunk customanalysis" width="50%" /></p>
+
+</body>
+
+</html>

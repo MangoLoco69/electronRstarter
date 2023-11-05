@@ -1,0 +1,20 @@
+as_classifier           Indicate model type to lime
+default_tokenize        Default function to tokenize
+explain                 Explain model predictions
+interactive_text_explanations
+                        Interactive explanations
+lime                    Create a model explanation function based on
+                        training data
+lime-package            lime: Local Interpretable Model-Agnostic
+                        Explanations
+model_support           Methods for extending limes model support
+plot_explanations       Plot a condensed overview of all explanations
+plot_features           Plot the features in an explanation
+plot_image_explanation
+                        Display image explanations as superpixel areas
+plot_superpixels        Test super pixel segmentation
+plot_text_explanations
+                        Plot text explanations
+stop_words_sentences    Stop words list
+test_sentences          Sentence corpus - test part
+train_sentences         Sentence corpus - train part

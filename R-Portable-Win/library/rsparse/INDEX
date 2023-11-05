@@ -1,0 +1,16 @@
+FTRL                    Logistic regression model with FTRL proximal
+                        SGD solver.
+FactorizationMachine    Second order Factorization Machines
+GloVe                   Global Vectors
+LinearFlow              Linear-FLow model for one-class collaborative
+                        filtering
+PureSVD                 PureSVD recommender model decompomposition
+ScaleNormalize          Re-scales input matrix proportinally to item
+                        popularity
+WRMF                    Weighted Regularized Matrix Factorization for
+                        collaborative filtering
+detect_number_omp_threads
+                        Detects number of OpenMP threads in the system
+metrics                 Ranking Metrics for Top-K Items
+movielens100k           MovieLens 100K Dataset
+soft_impute             SoftImpute/SoftSVD matrix factorization

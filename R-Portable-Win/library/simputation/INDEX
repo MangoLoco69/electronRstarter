@@ -1,0 +1,16 @@
+deparse                 A 'deparse' replacement that always returns a
+                        length-1 vector
+foretell                Alternative to 'predict' returning values of
+                        correct type.
+glimpse_na              Show the number of (remaining) missing values.
+impute                  Impute using a previously fitted model.
+impute_cart             Decision Tree Imputation
+impute_hotdeck          Hot deck imputation
+impute_lm               (Robust) Linear Regression Imputation
+impute_median           Impute (group-wise) medians
+impute_multivariate     Multivariate, model-based imputation
+impute_proxy            Impute by variable derivation
+na.roughfix             Rough imputation for handling missing
+                        predictors.
+na_status               Show the number of (remaining) missing values.
+simputation             simputation
